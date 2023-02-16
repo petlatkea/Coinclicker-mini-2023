@@ -24,6 +24,8 @@ body {
 
 #game_elements {
      grid-area: 1 /1;
+     overflow: hidden;
+     position: relative;
 }
 
 /* positioning elements */
@@ -31,7 +33,7 @@ body {
 #coin1_container {
     position: absolute;
     
-    top: 50vw;
+    top: 0;
     left: 10vw;
 }
 
@@ -42,7 +44,7 @@ body {
 #coin2_container {
     position: absolute;
     
-    top: 35vw;
+    top: 0;
     left: 40vw;
 }
 
@@ -53,7 +55,7 @@ body {
 #coin3_container {
     position: absolute;
     
-    top: 20vw;
+    top: 0;
     left: 70vw;
 }
 
@@ -64,7 +66,7 @@ body {
 #bomb_container {
     position: absolute;
     
-    top: 20vw;
+    top: 0;
     left: 30vw;
 }
 
@@ -75,7 +77,7 @@ body {
 #heart_container {
     position: absolute;
     
-    top: 45vw;
+    top: 0;
     left: 55vw;
 }
 
@@ -85,10 +87,76 @@ body {
 
 /* Animations */
 
+.falling {
+    animation-name: falling;
+    animation-duration: 4s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
 
+@keyframes falling {
+    0% {
+        transform: translate(0,-100%);
+    }
 
+    100% {
+        transform: translate(0,56.25vw);
+    }
+}
 
+.zoom_out {
+    animation-name: zoom_out;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
 
+@keyframes zoom_out {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(0);
+    }
+}
+
+.zoom_in {
+    animation-name: zoom_in;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    image-rendering: pixelated
+}
+
+@keyframes zoom_in {
+    0% {
+        transform: scale(1);
+    }    
+    100% {
+        transform: scale(10);
+    }
+}
+
+.spiral {
+    animation-name: spiral;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    transform-origin: 50% 150%;
+}
+
+@keyframes spiral {
+    0% {
+        transform: rotate(0deg) scale(1);
+    }
+    100% {
+        transform: rotate(720deg) scale(0);
+    }
+}
+
+.paused {
+    animation-play-state: paused;
+}
 
 
 
