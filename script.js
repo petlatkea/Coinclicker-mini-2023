@@ -9,4 +9,10 @@ function start() {
 
 function clickCoin() {
   console.log("Click coin");
+  // Stop coin container
+  document.querySelector("#coin1_container").classList.add("paused");
+
+  // sæt forsvind-animation på coin
+  document.querySelector("#coin1_sprite").classList.add("zoom_out");
+
 }
