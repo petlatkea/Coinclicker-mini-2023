@@ -1,7 +1,13 @@
+"use strict";
 window.addEventListener("load", start);
+
+let point = 0;
 
 function start() {
   console.log("JavaScript kører!");
+
+  // nulstil point
+  point = 0;
 
   // Start animationer
   document.querySelector("#coin1_container").classList.add("falling");
@@ -26,6 +32,8 @@ function clickCoin() {
   // når forsvind-animation er færdig: coinGone
   document.querySelector("#coin1_container").addEventListener("animationend", coinGone);
   
+  // Giv point
+  givPoint();
 }
 
 function coinGone() {
@@ -82,4 +90,10 @@ function bombGone() {
 
   // gør det muligt at klikke på coin igen
   document.querySelector("#bomb_container").addEventListener("click", clickBomb);
+}
+
+function givPoint() {
+  console.log("Giv point");
+  point++;
+  console.log("har nu " + point + " point");
 }
