@@ -2,12 +2,14 @@
 window.addEventListener("load", start);
 
 let point = 0;
+let liv = 0;
 
 function start() {
   console.log("JavaScript kører!");
 
-  // nulstil point
+  // nulstil point og liv
   point = 0;
+  liv = 3;
 
   // Start animationer
   document.querySelector("#coin1_container").classList.add("falling");
@@ -71,6 +73,7 @@ function clickBomb() {
   // når forsvind-animation er færdig: coinGone
   document.querySelector("#bomb_container").addEventListener("animationend", bombGone);
   
+  mistLiv();
 }
 
 function bombGone() {
@@ -88,7 +91,7 @@ function bombGone() {
   document.querySelector("#bomb_container").offsetWidth;
   document.querySelector("#bomb_container").classList.add("falling");
 
-  // gør det muligt at klikke på coin igen
+  // gør det muligt at klikke på bomb igen
   document.querySelector("#bomb_container").addEventListener("click", clickBomb);
 }
 
@@ -102,4 +105,15 @@ function givPoint() {
 function visPoint() {
   console.log("vis point");
   document.querySelector("#coin_count").textContent = point;
+}
+
+function mistLiv() {
+  console.log("mist et liv");
+  visMistetLiv();
+  liv--;
+}
+
+function visMistetLiv() {
+  document.querySelector("#heart" + liv).classList.remove("active_heart");
+  document.querySelector("#heart" + liv).classList.add("broken_heart");
 }
