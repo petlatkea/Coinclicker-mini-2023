@@ -3,10 +3,11 @@ window.addEventListener("load", start);
 function start() {
   console.log("JavaScript kører!");
 
+  // Start animationer
+  document.querySelector("#coin1_container").classList.add("falling");
 
-
+  // Registrer click
   document.querySelector("#coin1_container").addEventListener("click", clickCoin);
-
 }
 
 function clickCoin() {
@@ -35,7 +36,10 @@ function coinGone() {
   // fjern pause
   document.querySelector("#coin1_container").classList.remove("paused");
 
-  // TODO: genstart falling animation
+  // genstart falling animation
+  document.querySelector("#coin1_container").classList.remove("falling");
+  document.querySelector("#coin1_container").offsetWidth;
+  document.querySelector("#coin1_container").classList.add("falling");
 
   // gør det muligt at klikke på coin igen
   document.querySelector("#coin1_container").addEventListener("click", clickCoin);
