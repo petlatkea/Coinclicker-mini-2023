@@ -96,4 +96,10 @@ function givPoint() {
   console.log("Giv point");
   point++;
   console.log("har nu " + point + " point");
+  visPoint();
+}
+
+function visPoint() {
+  console.log("vis point");
+  document.querySelector("#coin_count").textContent = point;
 }
