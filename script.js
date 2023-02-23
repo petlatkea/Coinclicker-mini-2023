@@ -7,8 +7,8 @@ function start() {
   
   // Registrer click
   document.querySelector("#coin1_container").addEventListener("click", coinClicked);
-//  document.querySelector("#coin2_container").addEventListener("click", coinClicked);
-//  document.querySelector("#coin3_container").addEventListener("click", coinClicked);
+  document.querySelector("#coin2_container").addEventListener("click", coinClicked);
+  document.querySelector("#coin3_container").addEventListener("click", coinClicked);
   document.querySelector("#bomb_container").addEventListener("click", clickBomb);
 }
 
@@ -31,7 +31,7 @@ function startAlleAnimationer() {
 function coinClicked() {
   console.log("Click coin");
   // Brug en coin variabel i stedet for gentagne querySelectors
-  const coin = document.querySelector("#coin1_container");
+  const coin = this;// document.querySelector("#coin1_container");
 
   // Forhindr gentagne clicks
   coin.removeEventListener("click", coinClicked);
@@ -43,14 +43,13 @@ function coinClicked() {
   coin.querySelector("img").classList.add("zoom_out");
 
   // når forsvind-animation er færdig: coinGone
-  coin.addEventListener("animationend", coinGone);
-  
+  coin.addEventListener("animationend", coinGone);  
 }
 
 function coinGone() {
   console.log("coin gone");
   // Brug en coin variabel i stedet for gentagne querySelectors
-  const coin = document.querySelector("#coin1_container");
+  const coin = this;//document.querySelector("#coin1_container");
   // fjern event der bringer os herind
   coin.removeEventListener("animationend", coinGone);
 
