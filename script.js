@@ -10,6 +10,11 @@ function start() {
   document.querySelector("#coin2_container").addEventListener("click", coinClicked);
   document.querySelector("#coin3_container").addEventListener("click", coinClicked);
   document.querySelector("#bomb_container").addEventListener("click", clickBomb);
+
+  // Registrer når bunden rammes
+  document.querySelector("#coin1_container").addEventListener("animationiteration", coinRestart);
+  document.querySelector("#coin2_container").addEventListener("animationiteration", coinRestart);
+  document.querySelector("#coin3_container").addEventListener("animationiteration", coinRestart);
 }
 
 function startAlleAnimationer() {
