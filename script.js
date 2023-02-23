@@ -3,6 +3,16 @@ window.addEventListener("load", start);
 function start() {
   console.log("JavaScript kører!");
 
+  startAlleAnimationer();
+  
+  // Registrer click
+  document.querySelector("#coin1_container").addEventListener("click", coinClicked);
+//  document.querySelector("#coin2_container").addEventListener("click", coinClicked);
+//  document.querySelector("#coin3_container").addEventListener("click", coinClicked);
+  document.querySelector("#bomb_container").addEventListener("click", clickBomb);
+}
+
+function startAlleAnimationer() {
   // Start falling animationer
   document.querySelector("#coin1_container").classList.add("falling");
   document.querySelector("#coin2_container").classList.add("falling");
@@ -16,27 +26,21 @@ function start() {
   document.querySelector("#coin3_container").classList.add("position3");
   document.querySelector("#bomb_container").classList.add("position4");
   document.querySelector("#heart_container").classList.add("position5");
-
-  // Registrer click
-  document.querySelector("#coin1_container").addEventListener("click", clickCoin);
-  document.querySelector("#coin2_container").addEventListener("click", clickCoin);
-  document.querySelector("#coin3_container").addEventListener("click", clickCoin);
-  document.querySelector("#bomb_container").addEventListener("click", clickBomb);
 }
 
-function clickCoin() {
+function coinClicked() {
   console.log("Click coin");
   // Brug en coin variabel i stedet for gentagne querySelectors
   const coin = document.querySelector("#coin1_container");
 
   // Forhindr gentagne clicks
-  coin.removeEventListener("click", clickCoin);
+  coin.removeEventListener("click", coinClicked);
   
   // Stop coin container
   coin.classList.add("paused");
 
   // sæt forsvind-animation på sprite
-  coin.firstElementChild.classList.add("zoom_out");
+  coin.querySelector("img").classList.add("zoom_out");
 
   // når forsvind-animation er færdig: coinGone
   coin.addEventListener("animationend", coinGone);
@@ -51,7 +55,7 @@ function coinGone() {
   coin.removeEventListener("animationend", coinGone);
 
   // fjern forsvind-animation på sprite
-  coin.firstElementChild.classList.remove("zoom_out");
+  coin.querySelector("img").classList.remove("zoom_out");
   
   // fjern pause
   coin.classList.remove("paused");
@@ -61,8 +65,15 @@ function coinGone() {
   coin.offsetWidth;
   coin.classList.add("falling");
 
+  // fjern alle positioner
+  coin.classList.remove("position1", "position2", "position3", "position4", "position5");
+
+  // sæt position til en ny klasse
+  const p = Math.ceil(Math.random()*5);
+  coin.classList.add(`position${p}`);
+
   // gør det muligt at klikke på coin igen
-  coin.addEventListener("click", clickCoin);
+  coin.addEventListener("click", coinClicked);
 }
 
 
