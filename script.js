@@ -59,6 +59,16 @@ function coinGone() {
   // fjern pause
   coin.classList.remove("paused");
 
+  coinRestart.call(this);
+
+  // gør det muligt at klikke på coin igen
+  coin.addEventListener("click", coinClicked);
+}
+
+function coinRestart() {
+  console.log("coin restart");
+  const coin = this;
+
   // genstart falling animation
   coin.classList.remove("falling");
   coin.offsetWidth;
@@ -70,11 +80,7 @@ function coinGone() {
   // sæt position til en ny klasse
   const p = Math.ceil(Math.random()*5);
   coin.classList.add(`position${p}`);
-
-  // gør det muligt at klikke på coin igen
-  coin.addEventListener("click", coinClicked);
 }
-
 
 
 function clickBomb() {
