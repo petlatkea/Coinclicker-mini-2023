@@ -28,7 +28,7 @@ body {
      position: relative;
 }
 
-/* positioning elements */
+/* placer elementer - containere og sprites */
 
 #coin1_container {
     position: absolute;
@@ -84,6 +84,9 @@ body {
 #heart_sprite {
     width: 100%;
 }
+
+/* position klasser */
+
 
 /* Animations */
 
@@ -161,21 +164,3 @@ body {
 .paused {
     animation-play-state: paused;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
