@@ -1,7 +1,9 @@
+"use strict";
+
 window.addEventListener("load", start);
 
 function start() {
-  console.log("JavaScript kører!");
+  console.log("start");
 
   // Start animationer
   document.querySelector("#coin1_container").classList.add("falling");
@@ -29,6 +31,7 @@ function coinClicked() {
 }
 
 function coinGone() {
+  console.log("coin gone");
   // fjern event der bringer os herind
   document.querySelector("#coin1_container").removeEventListener("animationend", coinGone);
 
@@ -65,6 +68,7 @@ function bombClicked() {
 }
 
 function bombGone() {
+  console.log("bomb gone");
   // fjern event der bringer os herind
   document.querySelector("#bomb_container").removeEventListener("animationend", bombGone);
 
